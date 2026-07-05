@@ -1,0 +1,1 @@
+<h1 align= "center">Your Journaling Companion: A Raspberry Pi Project </h1>

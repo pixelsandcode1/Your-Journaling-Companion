@@ -1,3 +1,7 @@
+"""
+This driver code was copied from rdagger/micropython-ili9341.
+Its primary purpose is to load bitmap fonts to render readable text.
+"""
 """XGLCD Font Utility."""
 from math import ceil, floor
 

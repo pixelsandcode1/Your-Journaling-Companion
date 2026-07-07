@@ -1,4 +1,5 @@
 //Copied from rdagger/micropython-ili9341
+// Moved to route directory due to path issues. Quick prototyping so I will diagnose at a later time.
 
 //WARNING: This Font Require X-GLCD Lib.
 //         You can not use it with MikroE GLCD Lib.

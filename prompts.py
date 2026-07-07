@@ -6,6 +6,7 @@ the prompt breaks into a new line.
 from hardware.display import DisplayManager, color565
 from drivers.xglcd_font import XglcdFont
 import random
+import time
 
 welcome = DisplayManager.display 
 
@@ -47,33 +48,22 @@ pm_prompts = [
     "What does self care mean to you?"
 ]
 
-
+#this line looks like a run-time error, but it runs in the Pico environment
 chosen_prompt = random.choice(am_prompts) #type: str
-
-welcome.clear(0x0000)
 
 welcome.draw_text8x8(200, 170, "Monday, July 6th", color565(245,240,240), rotate = 90)
 welcome.draw_text8x8(180, 250, "9:45AM", color565(245,240,240), rotate = 90)
 
-str_length = len(chosen_prompt)
-print("this is the string length: ", str_length)
+wrapped_prompt = DisplayManager.wrap_text(chosen_prompt, 30)
 
-if str_length < 32:
+#once the string is parsed into a list of strings, put each new string on its own line, stacked & centered
+x_coordinate = 120
 
-    welcome.draw_text8x8(110, 35, chosen_prompt, color565(245,240,240), rotate = 90)
-    print("Hit this one")
+for line in wrapped_prompt:
+    line_width = len(line) * 8
+    y_coordinate = (320 - line_width) // 2
 
-else:
-   print("I started to wrap the text.")
-   wrap_length = 30
+    welcome.draw_text8x8(x_coordinate, y_coordinate, line, color565(245,240,240), rotate = 90)
+    x_coordinate -= 15
 
-   first_half = chosen_prompt[:wrap_length] 
-   second_half = chosen_prompt[wrap_length:]
-   print("This is the first half:", first_half)
-   print("This is the second half: ", second_half)
 
-   welcome.draw_text8x8(120, 35, first_half, color565(245,240,240), rotate = 90)
-   welcome.draw_text8x8(110, 35, second_half, color565(245,240,240), rotate = 90)
-
-   print("I wrapped the text.")
-   

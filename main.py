@@ -1,10 +1,12 @@
 from hardware.display import DisplayManager, color565
 from drivers.xglcd_font import XglcdFont
-import os
 
-espressodolce = XglcdFont('EspressoDolce18x24.c', 18, 24)
 
-#display.clear(0xF800)
-#DisplayManager.display.draw_text8x8(130,130,"Hello World", color565(255,0,0), rotate = 90)
-DisplayManager.display.draw_text(100, 200, "Hello World", espressodolce, color565(255,0,0), landscape = True, rotate_180 = True)
-#print(os.listdir())
+"""
+Main will be used to determine scheduling logic. It will check if the time is between 7 - 10AM & 7 - 10PM to turn on the welcome screen
+
+Logic Tree:
+---- Is it between 7 and 10AM or 7 and 10PM?
+> If yes : show welcome screen & wait for button push
+> If no : sleep
+"""

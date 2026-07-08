@@ -1,3 +1,5 @@
+#Display.py contains methods for text centering, text wrapping, and sets the configurations for the control pins
+
 from drivers.ili9341 import Display, color565
 from machine import Pin, SPI
 from drivers.xglcd_font import XglcdFont

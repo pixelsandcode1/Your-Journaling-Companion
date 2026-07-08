@@ -60,4 +60,4 @@ char_width = 8
 welcome.display.draw_text8x8(120, welcome.center_text(Eprompt), Eprompt, color565(242,181,247), rotate = 90)
 welcome.display.draw_text8x8(100, welcome.center_text(Mprompt), Mprompt, color565(245,240,240), rotate = 90)
 welcome.display.draw_text8x8(80, welcome.center_text(Gprompt), Gprompt, color565(245,240,240), rotate = 90)
-welcome.display.draw_text8x8(60, welcome.center_text(":)"), ":)", color565(245,240,240), rotate = 90)
+welcome.display.draw_text8x8(60, welcome.center_text(":)"), ":)", color565(242,181,247), rotate = 90)

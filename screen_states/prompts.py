@@ -6,7 +6,6 @@ the prompt breaks into a new line.
 from hardware.display import DisplayManager, color565
 from drivers.xglcd_font import XglcdFont
 import random
-import time
 
 welcome = DisplayManager.display 
 

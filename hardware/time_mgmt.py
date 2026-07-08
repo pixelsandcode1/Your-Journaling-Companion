@@ -1,3 +1,4 @@
+#Time.py shares the time and date.
 import time
 
 class TimeManager:
@@ -67,6 +68,15 @@ class TimeManager:
 
         return f"{hour}:{minute:02d} {time_period}"
     
-""" @staticmethod
+    @staticmethod
     def journaling_window():
-        True if the current time is between 7 - 10AM or 7 - 10PM"""
+        hour = time.localtime()[3]
+
+        if 7 <= hour < 10:
+            return "AM"
+        
+        elif 19 <= hour < 22:
+            return "PM"
+        
+        else:
+            return None

@@ -1,4 +1,4 @@
-#Display.py contains methods for text centering, text wrapping, and sets the configurations for the control pins
+#Display.py contains methods for text centering, text wrapping, header display, and sets the configurations for the control pins.
 
 from drivers.ili9341 import Display, color565
 from machine import Pin, SPI
@@ -63,7 +63,7 @@ class DisplayManager:
     @staticmethod
     def draw_right_aligned_text(x_coordinate,text):
         right_align = DisplayManager.display
-        screen_width = 300
+        screen_width = 300 #gave the screen some additional padding
         text_width = len(text) * 8
 
         y_coordinate = screen_width - text_width
@@ -79,16 +79,12 @@ class DisplayManager:
         DisplayManager.draw_right_aligned_text(200, date)
         DisplayManager.draw_right_aligned_text(180, current_time)
 
-        #draw.draw_text8x8(200, 180, date, color565(245,240,240), rotate = 90)
-        #draw.draw_text8x8(180, 250, current_time, color565(245,240,240), rotate = 90)
-
     @staticmethod
     def update_header():
         now = time.localtime()
 
         #if the minute has changed, update the minute
         if now[4] != DisplayManager._last_minute:
-
             DisplayManager._last_minute = now[4]
 
             DisplayManager.draw_header()
@@ -98,3 +94,6 @@ class DisplayManager:
         clear = DisplayManager.display
         clear.fill_rectangle(200, 180, 30, 5, 0x0000)
         clear.fill_rectangle(180, 250, 30, 5, 0x0000)
+
+
+#add a sleep function to clear display, tunr off LEDs, maybe reduce power

@@ -15,11 +15,9 @@ class WelcomeScreen:
         espressodolce = XglcdFont('EspressoDolce18x24.c', 18, 24)
 
         welcome.clear(0x0000)
-        print("I hit checkpoint 1.")
 
         DisplayManager.draw_header()
         welcome.draw_text(110, 300, "Your Journaling Companion", espressodolce, color565(242,181,247), landscape = True, rotate_180 = True)
         welcome.draw_text8x8(45, 55, "Press the button to begin", color565(245,240,240), rotate = 90)
         welcome.draw_text8x8(25, 150, " :)", color565(245,240,240), rotate = 90)
         welcome.draw_text8x8(10, 50, "Everyday, 2x, for 10 minutes", color565(242, 181,247), rotate = 90)
-        print("I hit the final checkpoint.")

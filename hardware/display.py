@@ -3,6 +3,8 @@
 from drivers.ili9341 import Display, color565
 from machine import Pin, SPI
 from drivers.xglcd_font import XglcdFont
+from hardware.time_mgmt import TimeManager
+import time
 
 #configures SPI and display to dedicated control pins
 
@@ -53,3 +55,46 @@ class DisplayManager:
         for line in text:
             y_coordinate = (320 - len(text) * 8) // 2
         return y_coordinate
+
+    _last_minute = None
+    _header_x_coordinate = 0
+    _header_y_coordinate = 0
+
+    @staticmethod
+    def draw_right_aligned_text(x_coordinate,text):
+        right_align = DisplayManager.display
+        screen_width = 300
+        text_width = len(text) * 8
+
+        y_coordinate = screen_width - text_width
+        right_align.draw_text8x8(x_coordinate,y_coordinate,text, color565(245,240,240), rotate = 90)
+
+    @staticmethod
+    def draw_header():
+
+        draw = DisplayManager.display
+        date = TimeManager.get_date()
+        current_time = TimeManager.get_time()
+
+        DisplayManager.draw_right_aligned_text(200, date)
+        DisplayManager.draw_right_aligned_text(180, current_time)
+
+        #draw.draw_text8x8(200, 180, date, color565(245,240,240), rotate = 90)
+        #draw.draw_text8x8(180, 250, current_time, color565(245,240,240), rotate = 90)
+
+    @staticmethod
+    def update_header():
+        now = time.localtime()
+
+        #if the minute has changed, update the minute
+        if now[4] != DisplayManager._last_minute:
+
+            DisplayManager._last_minute = now[4]
+
+            DisplayManager.draw_header()
+
+    @staticmethod
+    def clear_header():
+        clear = DisplayManager.display
+        clear.fill_rectangle(200, 180, 30, 5, 0x0000)
+        clear.fill_rectangle(180, 250, 30, 5, 0x0000)

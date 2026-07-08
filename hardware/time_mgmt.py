@@ -1,7 +1,8 @@
 import time
 
 class TimeManager:
-
+    #timezone in EST is -4 whichis UTC-4 during daylight saving. 
+    #This will manually change depending on time of year.
     timezone_offset_hours = -4 
 
     weekday = [

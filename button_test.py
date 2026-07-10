@@ -62,3 +62,5 @@ def test_journaling_flow():
 
 
 test_journaling_flow()
+
+#test file to see if button press changes to prompt screen, shows prompt + starts LED animation, before showing encouragment screen & powering down

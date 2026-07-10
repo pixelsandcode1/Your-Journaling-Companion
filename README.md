@@ -9,7 +9,7 @@
 ## About
 Your Journaling Companion is a Raspberry Pi-powered embedded device designed to encourage consistent daily journaling through a calm and low-friction interaction model. The device quietly becomes a part of a users environment to create dedicated moments for gratitude and reflection journaling. Twice a day, it wakes up during predefined morning and evening journaling windows. A warm ambient glow signals that it is time to start a session, if they are ready to. When the user is ready, they press a single button which begins a ten-minute prompted writing session timed by LED animation. Upon completion, the user receives a brief encouraging message before the device goes to sleep. 
 
-** 95 % done with this logic, need to update the led management to reflect the states
+** 95 % done with this logic, need to fully update the led management to reflect the states (outside of the demo)
 
 ## File Structure
 

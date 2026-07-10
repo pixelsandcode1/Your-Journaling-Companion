@@ -1,3 +1,5 @@
+#LED Management controls the LED state.
+
 from machine import Pin
 import neopixel
 import time
